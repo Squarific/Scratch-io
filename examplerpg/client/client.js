@@ -32,12 +32,7 @@ http.createServer(function(request, response) {
 
 	// Scratch client wants to listen to a new type of event
 	if (socket && params[0] == "register") {
-		socket.on(params[1], function (event, data) {
-			if (typeof data === "object" && data.length === "number") {
-				console.log("Bad data received: ", data);
-				return;
-			}
-			
+		socket.on(params[1], function (event, data) {			
 			console.log(data)
 
 			dataQueue.push({
@@ -62,7 +57,7 @@ http.createServer(function(request, response) {
 				}
 				
 				data += "event" + k + " " + dataQueue[0].event + "\n";
-				data += "value" + k + " " + dataQueue[0].data.join(",") + "\n";
+				data += "value" + k + " " + dataQueue[0].data + "\n";
 				dataQueue.splice(0, 1);
 			} else {
 				data += "event" + k + " none\n";
