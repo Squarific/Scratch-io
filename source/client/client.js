@@ -34,7 +34,7 @@ http.createServer(function(request, response) {
 	// Scratch client wants to listen to a new type of event
 	if (socket && params[0] == "register") {
 		socket.on(params[1], function (event, data) {
-			if (typeof data !== "object" && data.length !== "number") {
+			if (typeof data === "object" && data.length === "number") {
 				throw "You can only send arrays of strings and integers";
 			}
 
