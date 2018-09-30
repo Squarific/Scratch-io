@@ -35,7 +35,8 @@ http.createServer(function(request, response) {
 	if (socket && params[0] == "register") {
 		socket.on(params[1], function (event, data) {
 			if (typeof data === "object" && typeof data.length !== "number") {
-				throw "You can only send arrays of strings and integers";
+				console.log("You can only send arrays of strings and integers");
+				return;
 			}
 
 			dataQueue.push({
